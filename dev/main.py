@@ -119,8 +119,10 @@ class ReceptorSimulatorApp(tk.Tk):
             trainer.run_simulation(config)
         except Exception as e:
             import traceback
-            traceback.print_exc()
+            from tkinter import messagebox
+            error_trace = traceback.format_exc()
             print(f"Error during simulation: {e}")
+            messagebox.showerror("Simulation Crash", f"An error occurred:\n{e}\n\nTraceback:\n{error_trace}")
         finally:
             self.deiconify() # Show window again when done
 
